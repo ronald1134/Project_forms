@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,44 +8,53 @@
     <link rel="shortcut icon" href="assets/images/logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <h1 class="title">Registro de dados</h1>
-        
+
         <div class="flex-container">
-            
+
+            <div class="stars"></div>
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+
             <div class="form-card">
-                <form id="bloco-form">
+                <form id="bloco-form" autocomplete="off">
                     <div class="form-group">
                         <label for="nome" class="form-label">Nome do Colaborador</label>
-                        <input type="text" id="nome" name="nome" class="form-input" placeholder="digite o nome do colaborador">
+                        <input type="text" id="nome" name="nome" class="form-input" placeholder="digite o nome do colaborador" minlength="3">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="data" class="form-label">Data adicionada</label>
-                        <input type="date" id="data" name="data" class="form-input">
+                        <input type="date" id="data" name="data" class="form-input" >
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="marca" class="form-label">Marca</label>
                         <input type="text" id="marca" name="marca" class="form-input" placeholder="digite a marca">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="especialidade" class="form-label">Especialidade</label>
                         <input type="text" id="especialidade" name="especialidade" class="form-input">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="solicitante" class="form-label">Quem solicitou</label>
                         <input type="text" id="solicitante" name="solicitante" class="form-input">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="motivo" class="form-label">Motivo</label>
-                        <textarea class="form-input form-textarea" id="motivo" name="motivo" rows="3" placeholder="Registre o motivo aqui (opcional)" ></textarea>
+                        <textarea class="form-input form-textarea" id="motivo" name="motivo" rows="3"
+                            placeholder="Registre o motivo aqui (opcional)"></textarea>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="pacientes" class="form-label">Quantidade de Pacientes afetados</label>
                         <input type="number" id="pacientes" name="pacientes" min="0" class="form-input">
@@ -52,7 +62,25 @@
                 </form>
             </div>
             <!--colocar campo lateral-->
+            <div class="actions-card">
+                <button id="submitBtn" class="btn btn-primary">
+                    Adicionar Registro
+                </button>
+
+                <button id="clearBtn" class="btn btn-danger">
+                    Limpar Tudo
+                </button>
+
+                <div class="records-section">
+                    <h3 class="records-title">Registros Adicionados</h3>
+                    <div id="recordsList" class="records-list">
+                        <p class="empty-message">Nenhum registro adicionado ainda</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
+<script src="script.js"></script>
+
 </html>
