@@ -1,27 +1,24 @@
+// Array global para armazenar os registros
+const registros = [];
+
+// Função para formatar a data no formato brasileiro
 function formatarDataBR(dataString) {
     if (!dataString) return '';
-    
     const data = new Date(dataString);
-    // Ajusta para o fuso horário local
     data.setMinutes(data.getMinutes() + data.getTimezoneOffset());
-    
     const dia = String(data.getDate()).padStart(2, '0');
     const mes = String(data.getMonth() + 1).padStart(2, '0');
     const ano = data.getFullYear();
-    
     return `${dia}/${mes}/${ano}`;
 }
 
-function reverseFormatDate(dateStr) {
-    const [dia, mes, ano] = dateStr.split('/');
-    return `${ano}-${mes}-${dia}`;
-}
+// Adiciona evento ao botão de envio
+document.getElementById('submitBtn').addEventListener('click', function (e) {
+    e.preventDefault();
 
-document.getElementById('submitBtn').addEventListener('click', function() {
     const form = document.getElementById('bloco-form');
     const recordsList = document.getElementById('recordsList');
-    
-    // Verificar se todos os campos estão preenchidos (exceto motivo que é opcional)
+
     let allFilled = true;
     const requiredInputs = form.querySelectorAll('input:not([name="motivo"]), textarea:not([name="motivo"]), select');
     requiredInputs.forEach(input => {
@@ -32,78 +29,133 @@ document.getElementById('submitBtn').addEventListener('click', function() {
             input.classList.remove('invalid');
         }
     });
-    
+
     if (!allFilled) {
         alert('Por favor, preencha todos os campos obrigatórios!');
         return;
     }
-    
-    // Criar novo registro
+
+    const novoRegistro = {
+        id: Date.now(), // ID único apenas para controle local
+        nome: form.nome.value.trim(),
+        data: form.data.value.trim(),
+        marcas: form.marcas.value.trim(),
+        especialidade: form.especialidade.value.trim(),
+        qtdPacientes: form.qtdPacientes.value.trim(),
+        quemSolicitou: form.quemSolicitou.value.trim(),
+        motivo: form.motivo.value.trim()
+    };
+
+    registros.push(novoRegistro);
+
     const recordItem = document.createElement('div');
     recordItem.className = 'record-item';
-    
-    const recordContent = `
+    recordItem.dataset.id = novoRegistro.id;
+
+    recordItem.innerHTML = `
         <div class="record-header">
-            <p class="record-name"><strong>${form.querySelector('[name="nome"]').value}</strong></p>
+            <p class="record-name"><strong>${novoRegistro.nome}</strong></p>
             <div class="record-actions">
                 <button class="btn-edit">✏️ Editar</button>
                 <button class="btn-delete">🗑️ Excluir</button>
             </div>
         </div>
-        <p class="record-meta">${formatarDataBR(form.querySelector('[name="data"]').value)} <br> | <strong>${form.querySelector('[name="marcas"]').value}</strong></p>
-        <p class="record-meta">${form.querySelector('[name="especialidade"]').value} (${form.querySelector('[name="pacientes"]').value} pacientes)</p>
-        <p class="record-detail">Solicitado por: ${form.querySelector('[name="solicitante"]').value}</p>
-        ${form.querySelector('[name="motivo"]').value ? `<p class="record-detail"><strong>Motivo: ${form.querySelector('[name="motivo"]').value}</strong></p>` : ''}
+        <p class="record-meta">${formatarDataBR(novoRegistro.data)} <br> | <strong>${novoRegistro.marcas}</strong></p>
+        <p class="record-meta">${novoRegistro.especialidade} (${novoRegistro.qtdPacientes} Pacientes)</p>
+        <p class="record-detail">Solicitado por: ${novoRegistro.quemSolicitou}</p>
+        ${novoRegistro.motivo ? `<p class="record-detail"><strong>Motivo: ${novoRegistro.motivo}</strong></p>` : ''}
     `;
-    
-    recordItem.innerHTML = recordContent;
-    
-    // Adiciona evento de deletar
-    recordItem.querySelector('.btn-delete').addEventListener('click', function() {
+
+    // Excluir registro
+    recordItem.querySelector('.btn-delete').addEventListener('click', () => {
         if (confirm('Tem certeza que deseja excluir este registro?')) {
+            const id = parseInt(recordItem.dataset.id);
+            const index = registros.findIndex(r => r.id === id);
+            if (index > -1) registros.splice(index, 1);
             recordItem.remove();
-            
-            // Se não houver mais registros, mostra a mensagem
+
             if (recordsList.children.length === 0) {
                 recordsList.innerHTML = '<p class="empty-message">Nenhum registro adicionado ainda</p>';
             }
         }
     });
-    
-    // Adiciona evento de editar
-    recordItem.querySelector('.btn-edit').addEventListener('click', function() {
-        // Preenche o formulário com os dados do registro
-        form.querySelector('[name="nome"]').value = recordItem.querySelector('.record-name').textContent.trim();
-        form.querySelector('[name="data"]').value = reverseFormatDate(recordItem.querySelector('.record-meta').textContent.split('|')[0].trim());
-        form.querySelector('[name="marcas"]').value = recordItem.querySelector('.record-meta strong').textContent;
-        form.querySelector('[name="especialidade"]').value = recordItem.querySelector('.record-meta:nth-of-type(2)').textContent.split('(')[0].trim();
-        form.querySelector('[name="pacientes"]').value = recordItem.querySelector('.record-meta:nth-of-type(2)').textContent.match(/\((\d+)/)[1];
-        form.querySelector('[name="solicitante"]').value = recordItem.querySelector('.record-detail').textContent.replace('Solicitado por: ', '').trim();
-        
-        const motivoElement = recordItem.querySelector('.record-detail strong');
-        form.querySelector('[name="motivo"]').value = motivoElement ? motivoElement.textContent.replace('Motivo: ', '').trim() : '';
-        
-        // Remove o registro sendo editado
-        recordItem.remove();
-        
-        // Foca no primeiro campo para edição
-        form.querySelector('[name="nome"]').focus();
+
+    // Editar registro
+    recordItem.querySelector('.btn-edit').addEventListener('click', () => {
+        const id = parseInt(recordItem.dataset.id);
+        const index = registros.findIndex(r => r.id === id);
+        if (index > -1) {
+            const registro = registros.splice(index, 1)[0];
+            form.nome.value = registro.nome;
+            form.data.value = registro.data;
+            form.marcas.value = registro.marcas;
+            form.especialidade.value = registro.especialidade;
+            form.qtdPacientes.value = registro.qtdPacientes;
+            form.quemSolicitou.value = registro.quemSolicitou;
+            form.motivo.value = registro.motivo;
+
+            recordItem.remove();
+            form.nome.focus();
+        }
     });
-    
-    // Limpar mensagem de "Nenhum registro" se for o primeiro
+
     if (recordsList.querySelector('.empty-message')) {
         recordsList.innerHTML = '';
     }
-    
+
     recordsList.prepend(recordItem);
-    
-    // Limpar formulário
     form.reset();
 });
 
-document.getElementById('clearBtn').addEventListener('click', function() {
+// Limpar registros
+document.getElementById('clearBtn').addEventListener('click', () => {
     if (confirm('Tem certeza que deseja limpar todos os registros?')) {
-        const recordsList = document.getElementById('recordsList');
-        recordsList.innerHTML = '<p class="empty-message">Nenhum registro adicionado ainda</p>';
+        registros.length = 0;
+        document.getElementById('recordsList').innerHTML = '<p class="empty-message">Nenhum registro adicionado ainda</p>';
     }
+});
+
+// Finalizar (enviar para o backend)
+document.getElementById('finalizarBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const finalizarBtn = document.getElementById('finalizarBtn');
+    const loading = document.getElementById('loading');
+    const recordsList = document.getElementById('recordsList');
+
+    if (registros.length === 0) {
+        alert('Nenhum registro para enviar!');
+        return;
+    }
+
+    finalizarBtn.disabled = true;
+    loading.style.display = 'block';
+
+    // Remove o id antes de enviar ao backend
+    const registrosParaEnviar = registros.map(({ id, ...rest }) => rest);
+
+    fetch('https://forms-project-back.onrender.com/form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(registrosParaEnviar)
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log('Resposta do servidor:', data);
+            alert('Registros enviados com sucesso!');
+
+            // Limpa array
+            registros.length = 0;
+
+            // Limpa visualmente os registros
+            recordsList.innerHTML = '<p class="empty-message">Nenhum registro adicionado ainda</p>';
+        })
+        .catch(err => {
+            console.error('Erro ao enviar registros:', err);
+            alert('Erro ao enviar registros!');
+        })
+        .finally(() => {
+            finalizarBtn.disabled = false;
+            loading.style.display = 'none';
+        });
 });

@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controle de Operadores</title>
+    <title>Controle de Operação - Backoffice</title>
     <link rel="shortcut icon" href="assets/images/logo.jpeg" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
     <div class="container">
-        <h1 class="title">Registro de dados</h1>
+        <h1 class="title">Registro de dados - Backoffice</h1>
 
         <div class="flex-container">
 
@@ -59,8 +59,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="solicitante" class="form-label">Quem solicitou</label>
-                        <input type="text" id="solicitante" name="solicitante" class="form-input">
+                        <label for="quemSolicitou" class="form-label">Quem solicitou</label>
+                        <input type="text" id="quemSolicitou" name="quemSolicitou" class="form-input">
                     </div>
 
                     <div class="form-group">
@@ -70,16 +70,23 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="pacientes" class="form-label">Quantidade de Pacientes afetados</label>
-                        <input type="number" id="pacientes" name="pacientes" min="0" class="form-input">
+                        <label for="qtdPacientes" class="form-label">Quantidade de Pacientes afetados</label>
+                        <input type="number" id="qtdPacientes" name="qtdPacientes" min="0" class="form-input">
                     </div>
+                    <button id="submitBtn" class="btn btn-primary">
+                        Adicionar Registro
+                    </button>
                 </form>
             </div>
             <!--colocar campo lateral-->
             <div class="actions-card">
-                <button id="submitBtn" class="btn btn-primary">
-                    Adicionar Registro
+                
+                <button id="finalizarBtn" class="btn btn-primary" style="background-color: green">
+                    Finalizar
                 </button>
+                <div id="loading" style="display:none; text-align:center; margin-top:10px;">
+                    <span style="color: white;">Enviando registros... ⏳</span>
+                </div>
 
                 <button id="clearBtn" class="btn btn-danger">
                     Limpar Tudo
@@ -109,6 +116,6 @@
         </footer>
     </div>
 </body>
-<script src="script.js"></script>
+<script src="./script.js"></script>
 
 </html>
