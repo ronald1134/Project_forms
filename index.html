@@ -26,7 +26,21 @@
                 <form id="bloco-form" autocomplete="off">
                     <div class="form-group">
                         <label for="nome" class="form-label">Nome do Colaborador</label>
-                        <input type="text" id="nome" name="nome" class="form-input" placeholder="digite o nome do colaborador" minlength="3">
+                        <select class="seleção-marca" name="marcas" id="marcas">
+                            <option value="Axial">Axial</option>
+                            <option value="Cedimagem">Cedimagem</option>
+                            <option value="Delfin">Delfin</option>
+                            <option value="GCO">GCO</option>
+                            <option value="Multiscan">Multiscan</option>
+                            <option value="Plani Pro">Plani Pro</option>
+                            <option value="Pro Echo">Pro Echo</option>
+                            <option value="Cepem">Cepem</option>
+                            <option value="Sabedotti">Sabedotti</option>
+                            <option value="CDB">CDB</option>
+                            <option value="Umdi">Umdi</option>
+                            <option value="Gold">Gold</option>
+                            <option value="CDA">CDA</option>
+                            <option value="CDAF">CDAF</option>
                     </div>
 
                     <div class="form-group">
@@ -35,6 +49,7 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="nome" class="form-label">Marcas</label>
                         <select class="seleção-marca" name="marcas" id="marcas">
                         <option value="Axial">Axial</option>
                         <option value="Cedimagem">Cedimagem</option>
@@ -55,16 +70,58 @@
 
                     <div class="form-group">
                         <label for="especialidade" class="form-label">Especialidade</label>
-                        <input type="text" id="especialidade" name="especialidade" class="form-input">
+                        <select class="seleção-marca" name="marcas" id="marcas">
+                            <option value="Axial">Axial</option>
+                            <option value="Cedimagem">Cedimagem</option>
+                            <option value="Delfin">Delfin</option>
+                            <option value="GCO">GCO</option>
+                            <option value="Multiscan">Multiscan</option>
+                            <option value="Plani Pro">Plani Pro</option>
+                            <option value="Pro Echo">Pro Echo</option>
+                            <option value="Cepem">Cepem</option>
+                            <option value="Sabedotti">Sabedotti</option>
+                            <option value="CDB">CDB</option>
+                            <option value="Umdi">Umdi</option>
+                            <option value="Gold">Gold</option>
+                            <option value="CDA">CDA</option>
+                            <option value="CDAF">CDAF</option>
+                            </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="quemSolicitou" class="form-label">Quem solicitou</label>
-                        <input type="text" id="quemSolicitou" name="quemSolicitou" class="form-input">
+                    <div style="display: flex;">
+                        <div class="form-group" style="width: 70%;">
+                            <label for="quemSolicitou" class="form-label">Quem solicitou</label>
+                            <input type="text" id="quemSolicitou" name="quemSolicitou" class="form-input">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="quemSolicitou" class="form-label">Número do chamado</label>
+                            <input type="text" id="quemSolicitou" name="quemSolicitou" class="form-input">
+                        </div>
                     </div>
+                 
 
                     <div class="form-group">
                         <label for="motivo" class="form-label">Motivo</label>
+                        <select class="seleção-marca" name="motivo" id="motivo">
+                            <option value="Axial">Axial</option>
+                            <option value="Cedimagem">Cedimagem</option>
+                            <option value="Delfin">Delfin</option>
+                            <option value="GCO">GCO</option>
+                            <option value="Multiscan">Multiscan</option>
+                            <option value="Plani Pro">Plani Pro</option>
+                            <option value="Pro Echo">Pro Echo</option>
+                            <option value="Cepem">Cepem</option>
+                            <option value="Sabedotti">Sabedotti</option>
+                            <option value="CDB">CDB</option>
+                            <option value="Umdi">Umdi</option>
+                            <option value="Gold">Gold</option>
+                            <option value="CDA">CDA</option>
+                            <option value="CDAF">CDAF</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="motivo" class="form-label">Observações</label>
                         <textarea class="form-input form-textarea" id="motivo" name="motivo" rows="3"
                             placeholder="Registre o motivo aqui (opcional)"></textarea>
                     </div>
