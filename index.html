@@ -47,8 +47,8 @@
                         <input type="date" id="data" name="data" class="form-input">
                     </div>
 
-                    <div style="display: flex; gap: 1.5rem;">
-                        <div class="form-group" style="width: 50%;">
+                    <div class="form-marca">
+                        <div class="form-group label-marca">
                             <label for="nome" class="form-label">Marca</label>
                             <select class="seleção-marca form-input" name="marca" id="marca">
                                 <option value="AXIAL">AXIAL</option>
@@ -112,7 +112,7 @@
                     </div>
 
 
-                    <div style="display: flex; gap: 1.5rem;">
+                    <div class="quemSlt">
                         <div class="form-group form-group2">
                             <label for="quemSolicitou" class="form-label">Quem solicitou</label>
                             <input type="text" id="quemSolicitou" name="quemSolicitou" class="form-input">
@@ -160,10 +160,10 @@
             <!--colocar campo lateral-->
             <div class="actions-card">
 
-                <button id="finalizarBtn" class="btn btn-primary" style="background-color: green">
+                <button id="finalizarBtn" class="btn btn-primary">
                     Finalizar
                 </button>
-                <div id="loading" style="display:none; text-align:center; margin-top:10px;">
+                <div  id="loading">
                     <span style="color: white;">Enviando registros... ⏳</span>
                 </div>
 
@@ -179,6 +179,7 @@
                 </div>
             </div>
         </div>
+
         <footer class="end-page">
             <div class="flex-end">
                 <p>Feito por <strong><a href=""></a>© Ronald Oliveira </strong></p>
