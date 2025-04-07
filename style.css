@@ -367,7 +367,6 @@ body {
 .quemSlt {
     display: flex;
     gap: 1.5rem;
-    border: solid blue;
 }
 
 #loading {
