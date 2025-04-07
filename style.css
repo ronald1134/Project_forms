@@ -190,7 +190,7 @@ body {
                 width: 25rem;
             }
         }
-        
+
         .btn {
             display: block;
             width: 100%;
@@ -332,6 +332,5 @@ body {
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 5px solid blue;
             color: whitesmoke;
         }

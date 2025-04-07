@@ -26,20 +26,7 @@
                 <form id="bloco-form" autocomplete="off">
                     <div class="form-group">
                         <label for="nome" class="form-label">Nome do Colaborador</label>
-                        <select class="seleção-marca" name="nome" id="nome">
-                            <option value="CAMILA HEMETERIO">CAMILA HEMETERIO </option>
-                            <option value="PATRICIA FREITAS">PATRICIA FREITAS</option>
-                            <option value="GLEICE CASSIMIRO">GLEICE CASSIMIRO</option>
-                            <option value="ARLETE SANTOS">ARLETE SANTOS</option>
-                            <option value="ANA LIVIA">ANA LIVIA</option>
-                            <option value="JAQUELINE APARECIDA">JAQUELINE APARECIDA</option>
-                            <option value="NICOLAS CRUZ">NICOLAS CRUZ</option>
-                            <option value="VICTORIA SANTOS">VICTORIA SANTOS</option>
-                            <option value="GRASIELLE SILVA">GRASIELLE SILVA</option>
-                            <option value="LUCIANO OLIVEIRA">LUCIANO OLIVEIRA</option>
-                            <option value="WILLIAM SILVA">WILLIAM SILVA</option>
-                            <option value="BIANCA LIMA">BIANCA LIMA</option>
-                        </select>
+                        <input type="text" id="nome" name="nome" class="form-input" placeholder="digite o nome do colaborador" minlength="3">
                     </div>
 
                     <div class="form-group">
@@ -118,10 +105,9 @@
                             <input type="text" id="quemSolicitou" name="quemSolicitou" class="form-input">
                         </div>
 
-                        <div class="form-group">
-                            <label for="numChamado" class="form-label">Número do chamado</label>
-                            <input type="text" id="numChamado" name="numChamado" class="form-input">
-                        </div>
+                    <div class="form-group">
+                        <label for="solicitante" class="form-label">Quem solicitou</label>
+                        <input type="text" id="solicitante" name="solicitante" class="form-input">
                     </div>
 
 
@@ -159,9 +145,8 @@
             </div>
             <!--colocar campo lateral-->
             <div class="actions-card">
-
-                <button id="finalizarBtn" class="btn btn-primary" style="background-color: green">
-                    Finalizar
+                <button id="submitBtn" class="btn btn-primary">
+                    Adicionar Registro
                 </button>
                 <div id="loading" style="display:none; text-align:center; margin-top:10px;">
                     <span style="color: white;">Enviando registros... ⏳</span>
