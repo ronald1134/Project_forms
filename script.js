@@ -39,7 +39,7 @@ document.getElementById('submitBtn').addEventListener('click', function (e) {
         id: Date.now(), // ID único apenas para controle local
         nome: form.nome.value.trim(),
         data: form.data.value.trim(),
-        marcas: form.marcas.value.trim(),
+        marca: form.marca.value.trim(),
         especialidade: form.especialidade.value.trim(),
         qtdPacientes: form.qtdPacientes.value.trim(),
         quemSolicitou: form.quemSolicitou.value.trim(),
@@ -60,7 +60,7 @@ document.getElementById('submitBtn').addEventListener('click', function (e) {
                 <button class="btn-delete">🗑️ Excluir</button>
             </div>
         </div>
-        <p class="record-meta">${formatarDataBR(novoRegistro.data)} <br> | <strong>${novoRegistro.marcas}</strong></p>
+        <p class="record-meta">${formatarDataBR(novoRegistro.data)} <br> | <strong>${novoRegistro.marca}</strong></p>
         <p class="record-meta">${novoRegistro.especialidade} (${novoRegistro.qtdPacientes} Pacientes)</p>
         <p class="record-detail">Solicitado por: ${novoRegistro.quemSolicitou}</p>
         ${novoRegistro.motivo ? `<p class="record-detail"><strong>Motivo: ${novoRegistro.motivo}</strong></p>` : ''}
@@ -88,7 +88,7 @@ document.getElementById('submitBtn').addEventListener('click', function (e) {
             const registro = registros.splice(index, 1)[0];
             form.nome.value = registro.nome;
             form.data.value = registro.data;
-            form.marcas.value = registro.marcas;
+            form.marca.value = registro.marca;
             form.especialidade.value = registro.especialidade;
             form.qtdPacientes.value = registro.qtdPacientes;
             form.quemSolicitou.value = registro.quemSolicitou;
