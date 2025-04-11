@@ -44,7 +44,8 @@ document.getElementById('submitBtn').addEventListener('click', function (e) {
         form.especialidade.value.trim() === "" ||    
         form.qtdPacientes.value.trim() === "" ||   
         form.quemSolicitou.value.trim() === "" ||   
-        form.motivo.value.trim() === ""
+        form.motivo.value.trim() === "" ||
+        form.numChamado.value.trim() === ""
     ) {
         alert('Por favor, preencha todos os campos obrigatórios!');
         return;
@@ -61,7 +62,8 @@ document.getElementById('submitBtn').addEventListener('click', function (e) {
         qtdPacientes: form.qtdPacientes.value.trim(),
         quemSolicitou: form.quemSolicitou.value.trim(),
         motivo: form.motivo.value.trim(),
-        observacao: form.observacao.value.trim()
+        observacao: form.observacao.value.trim(),
+        numChamado: form.numChamado.value.trim()
     };
 
     registros.push(novoRegistro);
@@ -113,6 +115,7 @@ document.getElementById('submitBtn').addEventListener('click', function (e) {
             form.quemSolicitou.value = registro.quemSolicitou;
             form.motivo.value = registro.motivo;
             form.observacao.value = recordItem.observacao;
+            form.numChamado.value = recordItem.numChamado;
 
             recordItem.remove();
             form.nome.focus();
