@@ -13,94 +13,6 @@ body {
     color: #333;
 }
 
-/*biblioteca abaixo*/
-.stars {
-    width: 1px;
-    height: 1px;
-    position: absolute;
-    background: white;
-    box-shadow: 2vw 5vh 2px white, 10vw 8vh 2px white, 15vw 15vh 1px white,
-        22vw 22vh 1px white, 28vw 12vh 2px white, 32vw 32vh 1px white,
-        38vw 18vh 2px white, 42vw 35vh 1px white, 48vw 25vh 2px white,
-        53vw 42vh 1px white, 58vw 15vh 2px white, 63vw 38vh 1px white,
-        68vw 28vh 2px white, 73vw 45vh 1px white, 78vw 32vh 2px white,
-        83vw 48vh 1px white, 88vw 20vh 2px white, 93vw 52vh 1px white,
-        98vw 35vh 2px white, 5vw 60vh 1px white, 12vw 65vh 2px white,
-        18vw 72vh 1px white, 25vw 78vh 2px white, 30vw 85vh 1px white,
-        35vw 68vh 2px white, 40vw 82vh 1px white, 45vw 92vh 2px white,
-        50vw 75vh 1px white, 55vw 88vh 2px white, 60vw 95vh 1px white,
-        65vw 72vh 2px white, 70vw 85vh 1px white, 75vw 78vh 2px white,
-        80vw 92vh 1px white, 85vw 82vh 2px white, 90vw 88vh 1px white,
-        95vw 75vh 2px white;
-    animation: twinkle 8s infinite linear;
-}
-
-/* ESTRELAS CADENTES CORRIGIDAS (5 estrelas visíveis) */
-.shooting-star {
-    position: absolute;
-    width: 150px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
-    animation: shoot-left 4s infinite;
-    transform: rotate(-30deg);
-    opacity: 0;
-}
-
-@keyframes shoot-left {
-    0% {
-        transform: translateX(100vw) translateY(-50vh) rotate(-30deg);
-        opacity: 1;
-    }
-    70% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(-100px) translateY(50vh) rotate(-30deg);
-        opacity: 0;
-    }
-}
-
-/* Configuração das 5 estrelas cadentes */
-.shooting-star:nth-child(1) {
-    top: 15%;
-    animation-delay: 0s;
-    animation-duration: 6s;
-}
-
-.shooting-star:nth-child(2) {
-    top: 30%;
-    animation-delay: 1.2s;
-    animation-duration: 5.5s;
-}
-
-.shooting-star:nth-child(3) {
-    top: 45%;
-    animation-delay: 2.4s;
-    animation-duration: 7s;
-}
-
-.shooting-star:nth-child(4) {
-    top: 60%;
-    animation-delay: 3.6s;
-    animation-duration: 6.5s;
-}
-
-.shooting-star:nth-child(5) {
-    top: 75%;
-    animation-delay: 4.8s;
-    animation-duration: 5s;
-}
-
-/* Animação de twinkle (mantida igual) */
-@keyframes twinkle {
-    0%, 100% {
-        opacity: 0.8;
-    }
-    50% {
-        opacity: 0.4;
-    }
-}
-
 .container {
     max-width: 72rem;
     margin: 0 auto;
@@ -113,6 +25,7 @@ body {
     font-weight: bold;
     color: #ffffff;
     padding: 0.5rem 0.8rem;
+    margin-top: 3rem;
     border-radius: 15px 15px 0px 0px;
     background-color: #1b2735;
     transition: all 0.5s;
